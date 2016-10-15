@@ -6,6 +6,7 @@ import random
 class Score(object):
     def __init__(self):
         self.current = 0
+        self.gameover = False
 
     def draw(self, screen):
         font = pygame.font.Font('fonts/geo.ttf', 55)
@@ -24,6 +25,18 @@ class IntroScreen(object):
 
         pygame.display.update()
         pygame.time.wait(2000)
+
+
+class GameoverScreen(object):
+    image = pygame.image.load('img/gameover.png')
+
+    def draw(self, screen, points):
+        screen.fill([255, 255, 255])
+        screen.blit(self.image, (175, 20))
+        font = pygame.font.Font('fonts/geo.ttf', 40)
+        text = font.render(str(points), True, [238, 37, 79])
+        screen.blit(text, [410, 43])
+        pygame.display.flip()
 
 
 class Screen(object):
